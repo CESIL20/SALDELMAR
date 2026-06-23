@@ -156,7 +156,7 @@ nav.scrolled {
 /* --- HERO SECTION --- */
 #inicio {
   height: 100vh;
-  background: linear-gradient(rgba(63, 80, 59, 0.4), rgba(15, 17, 21, 0.7)), url('assets/entrada.jpeg');
+  background: linear-gradient(rgba(63, 80, 59, 0.4), rgba(15, 17, 21, 0.7)), url('entrada.jpeg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
