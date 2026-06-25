@@ -59,13 +59,11 @@ nav.scrolled {
 }
 
 .img-logo {
-  max-height: 140px; /* 👈 Altura reducida para que no se vea gigante */
+  height: 70px;
   width: auto;
   display: block;
   object-fit: contain;
   background: transparent;
-  mix-blend-mode: multiply; /* 👈 Hace que el fondo blanco del logo sea transparente */
-  transition: transform 0.3s ease;
 }
 
 .logo-nav:hover .img-logo {
