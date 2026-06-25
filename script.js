@@ -1,12 +1,4 @@
-// 1. Efecto de navegación al hacer scroll
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+
 
 // 2. Funcionalidad Menú Hamburguesa (Con animación)
 const toggleBtn = document.querySelector('.nav-toggle');
