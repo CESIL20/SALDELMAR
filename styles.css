@@ -49,25 +49,24 @@ nav.scrolled {
   box-shadow: 0 4px 20px rgba(63, 80, 59, 0.12);
 }
 
-/* --- LOGO TRANSPARENTE --- */
 .logo-nav {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  padding: 0;
-  background: transparent;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
 }
 
 .img-logo {
-  height: 60px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-  background: transparent;
+    height: 50px !important;
+    max-height: 50px !important;
+    width: auto !important;
+    display: block;
 }
 
-.logo-nav:hover .img-logo {
-  transform: scale(1.03);
+nav {
+    height: 70px !important;
+    padding: 0 5% !important;
 }
 
 /* --- BOTÓN HAMBURGUESA --- */
@@ -502,8 +501,3 @@ footer {
   .modal-content { padding: 20px; margin: 10px; }
 }
 
-@media (max-width: 480px) {
-  .img-logo { max-height: 85px; }
-  .section-title h2 { font-size: 2.2rem; }
-  .menu-grid { grid-template-columns: 1fr; }
-}
