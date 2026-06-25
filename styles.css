@@ -448,6 +448,14 @@ section { padding: 6rem 10%; }
 .info-box h4 { color: var(--text-main); margin-bottom: 0.5rem; text-transform: uppercase; font-size: 0.9rem; letter-spacing: 0.1em;}
 .info-box p { color: var(--text-muted); font-size: 0.9rem; }
 
+.telefono,
+.telefono:visited,
+.telefono:hover,
+.telefono:active {
+    color: #3F503B;
+    text-decoration: none;
+}
+
 /* --- FOOTER --- */
 footer {
   background: #BCC4AF;
