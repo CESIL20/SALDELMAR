@@ -42,13 +42,7 @@ nav {
   box-shadow: 0 2px 15px rgba(63, 80, 59, 0.08); /* 👈 Sombra sutil */
   transition: all 0.3s ease;
 }
-
-nav.scrolled {
-  padding: 0.5rem 5%; /* Se hace aún más delgado al hacer scroll */
-  background: rgba(204, 211, 193, 0.98);
-  box-shadow: 0 4px 20px rgba(63, 80, 59, 0.12);
-}
-
+
 .logo-nav {
     display: flex;
     align-items: center;
