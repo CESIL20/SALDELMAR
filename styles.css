@@ -452,8 +452,8 @@ section { padding: 6rem 10%; }
 .telefono:visited,
 .telefono:hover,
 .telefono:active {
-    color: #3F503B;
-    text-decoration: none;
+    color: #5B6D57 !important;
+    text-decoration: none !important;
 }
 
 /* --- FOOTER --- */
