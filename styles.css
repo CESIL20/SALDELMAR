@@ -51,14 +51,14 @@ nav {
 }
 
 .img-logo {
-    height: 99px !important;
-    max-height: 99px !important;
+    height: 60px !important;
+    max-height: 60px !important;
     width: auto !important;
     display: block;
 }
 
 nav {
-    height: 50px !important;
+    height: 70px !important;
     padding: 0 5% !important;
 }
 
