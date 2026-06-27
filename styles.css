@@ -423,7 +423,7 @@ section { padding: 6rem 10%; }
 .nosotros-img img {
   width: 100vh;
   height: auto;
-  max-height: 600px;
+  max-height: 450px;
   object-fit: cover;
 }
 
