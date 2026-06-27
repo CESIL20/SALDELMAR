@@ -421,9 +421,9 @@ section { padding: 6rem 10%; }
 .nosotros-img, .nosotros-text { flex: 1; min-width: 300px; }
 
 .nosotros-img img {
-  width: 100%;
+  width: 100vh;
   height: auto;
-  max-height: 450px;
+  max-height: 600px;
   object-fit: cover;
 }
 
