@@ -440,7 +440,7 @@ section { padding: 6rem 10%; }
 .info-grid {
   display: flex;
   justify-content: center;
-  gap: 4rem;
+  gap: 2rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
 }
