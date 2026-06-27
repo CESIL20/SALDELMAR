@@ -423,7 +423,7 @@ section { padding: 6rem 10%; }
 .nosotros-img img {
   width: 100%;
   height: auto;
-  max-height: 350px;
+  max-height: 380px;
   object-fit: cover;
 }
 
@@ -440,7 +440,7 @@ section { padding: 6rem 10%; }
 .info-grid {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.2rem;
   flex-wrap: wrap;
   margin-top: 0.5rem;
 }
