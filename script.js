@@ -1,599 +1,85 @@
-/* --- VARIABLES DE COLORES (Paleta refinada - más nítida) --- */
-:root {
-  --bg-color: #F2F4EE;        /* Blanco verdoso suave — no tan saturado, más limpio */
-  --bg-dark: #E4E9DC;         /* Fondo alternado con mejor contraste */
-  --bg-section: #ECEEE7;      /* Para secciones intermedias */
-  --text-main: #2C3A28;       /* Verde oliva muy oscuro — mejor legibilidad */
-  --text-muted: #4A5E44;      /* Verde medio con más presencia */
-  --accent: #2C3A28;          /* Acento principal */
-  --border: rgba(44, 58, 40, 0.15);
-  --shadow: rgba(44, 58, 40, 0.12);
+// 1. Menú Hamburguesa
+const toggleBtn = document.querySelector('.nav-toggle');
+const navLinks = document.querySelector('.nav-links');
+
+if (toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+        toggleBtn.classList.toggle('active');
+        navLinks.classList.toggle('active');
+    });
+
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            toggleBtn.classList.remove('active');
+            navLinks.classList.remove('active');
+        });
+    });
 }
 
-/* --- RESET Y BASE --- */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+// 2. Modal
+function abrirModal() {
+    const modal = document.getElementById("modalReserva");
+    modal.classList.add("show");
+    document.body.style.overflow = "hidden";
 }
 
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-main);
-  line-height: 1.6;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+function cerrarModal() {
+    const modal = document.getElementById("modalReserva");
+    modal.classList.remove("show");
+    document.body.style.overflow = "auto";
 }
 
-/* --- NAVBAR --- */
-nav {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 70px !important;
-  padding: 0 5% !important;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 1000;
-  background: rgba(242, 244, 238, 0.97);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 1px 0 var(--border), 0 4px 20px var(--shadow);
-  transition: all 0.3s ease;
-}
-
-.logo-nav {
-  display: flex;
-  align-items: center;
-  padding: 0;
-  margin: 0;
-  line-height: 0;
-}
-
-.img-logo {
-  height: 90px !important;
-  max-height: 120px !important;
-  width: auto !important;
-  display: block;
-}
-
-/* --- BOTÓN HAMBURGUESA --- */
-.nav-toggle {
-  display: none;
-  width: 30px;
-  height: 24px;
-  position: relative;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-  padding: 0;
-  z-index: 1002;
-}
-
-.nav-toggle span {
-  display: block;
-  position: absolute;
-  height: 2px;
-  width: 100%;
-  background: var(--text-main);
-  border-radius: 2px;
-  opacity: 1;
-  left: 0;
-  transform: rotate(0deg);
-  transition: .25s ease-in-out;
-}
-
-.nav-toggle span:nth-child(1) { top: 0px; }
-.nav-toggle span:nth-child(2) { top: 10px; }
-.nav-toggle span:nth-child(3) { top: 20px; }
-
-.nav-toggle:hover span { background: var(--text-muted); }
-.nav-toggle.active span { background: var(--accent); }
-.nav-toggle.active span:nth-child(1) { top: 10px; transform: rotate(135deg); }
-.nav-toggle.active span:nth-child(2) { opacity: 0; left: -30px; }
-.nav-toggle.active span:nth-child(3) { top: 10px; transform: rotate(-135deg); }
-
-/* --- ENLACES DE NAVEGACIÓN --- */
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 1.5rem;
-  align-items: center;
-}
-
-.nav-links li { position: relative; }
-
-.nav-links li a {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  color: var(--text-main);
-  transition: color 0.3s ease;
-  text-decoration: none;
-  padding: 5px 0;
-}
-
-.nav-links li a:hover { color: var(--text-muted); }
-
-.nav-links li a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: var(--text-main);
-  transform: scaleX(0);
-  transform-origin: right;
-  transition: transform 0.35s ease-out;
-}
-
-.nav-links li a:hover::after {
-  transform: scaleX(1);
-  transform-origin: left;
-}
-
-/* --- HERO SECTION --- */
-#inicio {
-  height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    rgba(44, 58, 40, 0.35) 0%,
-    rgba(10, 14, 10, 0.72) 100%
-  ), url('entrada.png');
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  position: relative;
-}
-
-.hero-content {
-  max-width: 600px;
-  padding: 0 20px;
-}
-
-#inicio h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: clamp(2.8rem, 8vw, 4.5rem);
-  font-weight: 300;
-  color: #F8FAF5;
-  margin-bottom: 1rem;
-  line-height: 1.1;
-  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
-}
-
-#inicio p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.2rem;
-  color: #D8E0D0;
-  margin-bottom: 2.5rem;
-  font-style: italic;
-}
-
-/* Botón del Hero */
-.btn-reserva {
-  padding: 1rem 2.8rem;
-  border: 1.5px solid rgba(248, 250, 245, 0.8);
-  color: #F8FAF5;
-  font-size: 0.8rem;
-  font-weight: 500;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  transition: all 0.4s ease;
-  background: transparent;
-  cursor: pointer;
-  text-decoration: none;
-  display: inline-block;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.btn-reserva:hover {
-  background: #F8FAF5;
-  color: var(--text-main);
-  box-shadow: 0 0 30px rgba(248, 250, 245, 0.2);
-}
-
-/* --- MODAL --- */
-.modal {
-  display: flex;
-  position: fixed;
-  z-index: 9999;
-  inset: 0;
-  background: rgba(20, 28, 18, 0.55);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  justify-content: center;
-  align-items: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-
-.modal.show {
-  opacity: 1;
-  visibility: visible;
-}
-
-.modal-content {
-  background: #F2F4EE;
-  color: var(--text-main);
-  padding: 32px;
-  width: 90%;
-  max-width: 420px;
-  border-radius: 16px;
-  box-shadow: 0 24px 60px rgba(20, 28, 18, 0.25);
-  border: 1px solid var(--border);
-  transform: scale(0.92) translateY(10px);
-  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  position: relative;
-}
-
-.modal.show .modal-content {
-  transform: scale(1) translateY(0);
-}
-
-.modal-content h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 2.2rem;
-  font-weight: 400;
-  text-align: center;
-  color: var(--text-main);
-  margin-bottom: 20px;
-  letter-spacing: 0.02em;
-}
-
-.input-group {
-  display: flex;
-  align-items: center;
-  background: #FFFFFF;
-  border: 1.5px solid #C8D4C2;
-  border-radius: 10px;
-  margin: 10px 0;
-  padding: 0 15px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.input-group:focus-within {
-  border-color: var(--text-main);
-  box-shadow: 0 0 0 3px rgba(44, 58, 40, 0.08);
-}
-
-.input-group span {
-  font-size: 15px;
-  margin-right: 10px;
-  color: var(--text-muted);
-  opacity: 0.7;
-}
-
-.input-group input {
-  width: 100%;
-  padding: 13px 0;
-  background: transparent;
-  border: none;
-  color: var(--text-main);
-  outline: none;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 0.88rem;
-}
-
-.input-group input::placeholder { color: #8A9E85; }
-
-input[type="date"]::-webkit-calendar-picker-indicator,
-input[type="time"]::-webkit-calendar-picker-indicator {
-  filter: invert(0.3);
-  cursor: pointer;
-}
-
-.modal-content button[type="submit"] {
-  width: 100%;
-  padding: 14px;
-  background: var(--text-main);
-  color: #F2F4EE;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.82rem;
-  margin-top: 10px;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.modal-content button[type="submit"]:hover {
-  background: var(--text-muted);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(44, 58, 40, 0.22);
-}
-
-.cerrar {
-  position: absolute;
-  right: 16px;
-  top: 14px;
-  font-size: 22px;
-  cursor: pointer;
-  color: var(--text-muted);
-  transition: color 0.3s;
-  line-height: 1;
-}
-
-.cerrar:hover { color: var(--text-main); }
-
-.terminos {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 12px;
-  color: var(--text-muted);
-  margin: 15px 0;
-}
-
-.terminos input { accent-color: var(--text-main); width: auto; }
-
-/* --- SECCIONES GENERALES --- */
-section { padding: 6rem 10%; }
-
-.section-title {
-  text-align: center;
-  margin-bottom: 4rem;
-}
-
-.section-title h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 3.2rem;
-  color: var(--text-main);
-  letter-spacing: 0.02em;
-  font-weight: 300;
-}
-
-.section-title p {
-  color: var(--text-muted);
-  margin-top: 0.3rem;
-  font-style: italic;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1.1rem;
-}
-
-/* --- MENÚ --- */
-#menu { background-color: var(--bg-dark); }
-
-.menu-category-title {
-  text-align: center;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-main);
-  text-transform: uppercase;
-  letter-spacing: 0.35em;
-  margin: 4rem 0 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-}
-
-.menu-category-title::before, .menu-category-title::after {
-  content: '';
-  width: 40px;
-  height: 1px;
-  background: var(--text-main);
-  opacity: 0.25;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
-  gap: 0 3rem;
-}
-
-.menu-item {
-  padding: 1.5rem 0;
-  border-bottom: 1px solid var(--border);
-  transition: transform 0.3s ease;
-}
-
-.menu-item:hover { transform: translateX(5px); }
-
-.menu-item-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  margin-bottom: 0.5rem;
-}
-
-.menu-item h3 {
-  font-family: 'Cormorant Garamond', serif;
-  font-style: italic;
-  font-size: 1.45rem;
-  color: var(--text-main);
-  font-weight: 400;
-  letter-spacing: 0.01em;
-}
-
-.menu-item p {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  color: var(--text-muted);
-}
-
-/* --- NOSOTROS --- */
-#nosotros {
-  background-color: var(--bg-color);
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.nosotros-img, .nosotros-text { flex: 1; min-width: 300px; }
-
-.nosotros-img img {
-  width: 100%;
-  height: auto;
-  max-height: 400px;
-  object-fit: cover;
-  display: block;
-  filter: contrast(1.05) saturate(0.95);
-}
-
-.nosotros-text {
-  padding-left: 2rem;
-}
-
-.nosotros-text p {
-  color: var(--text-muted);
-  margin-bottom: 1rem;
-  font-size: 0.95rem;
-  line-height: 1.8;
-}
-
-/* --- CONTACTO --- */
-#contacto {
-  text-align: center;
-  border-top: 1px solid var(--border);
-  background: var(--bg-dark);
-}
-
-.info-grid {
-  display: flex;
-  justify-content: center;
-  gap: 3rem;
-  flex-wrap: wrap;
-  margin-top: 0.5rem;
-}
-
-.info-box h4 {
-  color: var(--text-main);
-  margin-bottom: 0.6rem;
-  text-transform: uppercase;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  font-weight: 600;
-}
-
-.info-box p {
-  color: var(--text-muted);
-  font-size: 0.92rem;
-}
-
-.telefono,
-.telefono:visited,
-.telefono:hover,
-.telefono:active {
-  color: var(--text-muted) !important;
-  text-decoration: none !important;
-  transition: color 0.3s;
-}
-
-.telefono:hover {
-  color: var(--text-main) !important;
-}
-
-/* --- FOOTER --- */
-footer {
-  background: #D8DDD1;
-  padding: 1.2rem;
-  text-align: center;
-  font-size: 0.72rem;
-  color: var(--text-main);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  border-top: 1px solid var(--border);
-}
-
-/* --- MENSAJE DEL FORMULARIO --- */
-.mensaje {
-  text-align: center;
-  font-size: 0.85rem;
-  margin-top: 10px;
-  min-height: 20px;
-  font-family: 'Montserrat', sans-serif;
-}
-
-/* --- ANIMACIONES --- */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* --- RESPONSIVE --- */
-@media (max-width: 768px) {
-  .nav-toggle { display: block; }
-
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 100%;
-    height: 100vh;
-    background: rgba(242, 244, 238, 0.99);
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transition: right 0.4s ease-in-out;
-    display: flex;
-    gap: 0;
-  }
-
-  .nav-links.active { right: 0; }
-
-  /* Logo dentro del menú móvil */
-  .nav-logo-mobile {
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(44, 58, 40, 0.12);
-    padding-bottom: 1.8rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-  }
-
-  .nav-mobile-logo {
-    height: 80px;
-    width: auto;
-    display: block;
-    opacity: 0;
-    transform: translateY(-12px);
-    transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s;
-  }
-
-  .nav-links.active .nav-mobile-logo {
-    opacity: 1;
-    transform: translateY(0);
-  }
-
-  .nav-links li a {
-    font-size: 1.1rem;
-    padding: 1rem 0;
-    display: block;
-  }
-
-  section { padding: 4rem 6%; }
-
-  .modal-content { padding: 24px; margin: 12px; }
-
-  .nosotros-text { padding-left: 0; padding-top: 2rem; }
-
-  .info-grid { gap: 2rem; }
-
-  #inicio { background-attachment: scroll; }
-}
-
-@media (max-width: 480px) {
-  section { padding: 3.5rem 5%; }
-  .section-title h2 { font-size: 2.4rem; }
-  .modal-content { padding: 20px; border-radius: 12px; }
-}
+// Cerrar modal al hacer clic fuera
+document.getElementById("modalReserva").addEventListener("click", function(e) {
+    if (e.target === this) cerrarModal();
+});
+
+// 3. Formulario de Reserva
+document.getElementById("formReserva").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const mensaje = document.getElementById("mensaje");
+    const btn = this.querySelector("button[type='submit']");
+
+    mensaje.style.color = "#4A5E44";
+    mensaje.textContent = "Procesando reserva...";
+    btn.disabled = true;
+    btn.textContent = "Enviando...";
+
+    const formData = new FormData(this);
+
+    try {
+        const response = await fetch("../api/guardar_reserva.php", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success) {
+            mensaje.style.color = "#4CAF50";
+            mensaje.textContent = "✅ Reserva registrada correctamente";
+
+            setTimeout(() => {
+                this.reset();
+                cerrarModal();
+                mensaje.textContent = "";
+                btn.disabled = false;
+                btn.textContent = "Confirmar Reserva";
+            }, 2000);
+
+        } else {
+            mensaje.style.color = "#ff4d4d";
+            mensaje.textContent = data.message;
+            btn.disabled = false;
+            btn.textContent = "Confirmar Reserva";
+        }
+
+    } catch(error) {
+        mensaje.style.color = "#ff4d4d";
+        mensaje.textContent = "Error al conectar con el servidor";
+        btn.disabled = false;
+        btn.textContent = "Confirmar Reserva";
+        console.error(error);
+    }
+});
