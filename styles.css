@@ -56,17 +56,10 @@ nav {
 }
 
 .img-logo {
-  height: 52px !important;
-  max-height: 52px !important;
+  height: 72px !important;
+  max-height: 72px !important;
   width: auto !important;
   display: block;
-}
-
-@media (max-width: 480px) {
-  .img-logo {
-    height: 44px !important;
-    max-height: 44px !important;
-  }
 }
 
 /* --- BOTÓN HAMBURGUESA --- */
@@ -546,14 +539,17 @@ footer {
     top: 64px;
     right: -100%;
     width: 100%;
-    height: calc(100vh - 64px);
+    height: auto;
+    padding: 1.5rem 0 2rem;
     background: rgba(242, 244, 238, 0.99);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     transition: right 0.4s ease-in-out;
     display: flex;
     gap: 0;
+    box-shadow: 0 8px 24px rgba(44, 58, 40, 0.1);
+    border-bottom: 1px solid rgba(44, 58, 40, 0.1);
   }
 
   .nav-links.active { right: 0; }
